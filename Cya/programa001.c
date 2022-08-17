@@ -2,16 +2,17 @@
 
 int main(){
 
-    int horasTrabajadas;
-    float costoHora;
+    int horastrabajadas;
+    float costohora;
     float sueldo;
-    printf("Ingrese las horas trabajadas por el empleado: ");
-    scanf(" %i", &horasTrabajadas);
-    printf("Ingrese el pago por hora: ");
-    scanf("%f", &costoHora);
-    sueldo = horasTrabajadas*costoHora;
-    printf("El sueldo total del operativo es ");
+    printf("ingrese las horas trabajadas por el empleado: ");
+    scanf(" %i", &horastrabajadas);
+    printf("ingrese el pago por hora: ");
+    scanf("%f", &costohora);
+    sueldo = horastrabajadas*costohora;
+    printf("el sueldo total del operativo es ");
     printf("%f", sueldo);
     getchar();
     return 0;
-}*/
+}
+*/
