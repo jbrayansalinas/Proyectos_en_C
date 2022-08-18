@@ -34,7 +34,43 @@
 		<Unit filename="programa001.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="programa2.c">
+		<Unit filename="programa002.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="programa003.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="programa004.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="programa005.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="programa006.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="programa007.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="programa008.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="programa009.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="programa010.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="programa011.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="programa012.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="programa013.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="programa014.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Extensions>
