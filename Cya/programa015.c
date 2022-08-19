@@ -1,4 +1,4 @@
-/*#include<stdio.h>
+#include<stdio.h>
 #include<conio.h>
 
 int retornarSuperficie(int lado){
@@ -18,4 +18,4 @@ int main(){
     getch();
     return 0;
 }
-*/
+
