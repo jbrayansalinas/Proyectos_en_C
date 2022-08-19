@@ -79,6 +79,9 @@
 		<Unit filename="programa016.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="programa017.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>

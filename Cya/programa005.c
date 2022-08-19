@@ -1,4 +1,4 @@
-/*#include<stdio.h>
+#include<stdio.h>
 #include<conio.h>
 
 int main(){
@@ -9,9 +9,9 @@ int main(){
     scanf("%i", &num1);
     printf("Digite el segundo numero: ");
     scanf("%i", &num2);
-    printf("Digite el tercer número: ");
+    printf("Digite el tercer nï¿½mero: ");
     scanf("%i", &num3);
-    printf("Digite el cuarto número: ");
+    printf("Digite el cuarto nï¿½mero: ");
     scanf("%i", &num4);
 
     suma = num1 + num2;
@@ -32,4 +32,4 @@ int main(){
     printf(" es: ");
     printf("%i", producto);
 }
-*/
+

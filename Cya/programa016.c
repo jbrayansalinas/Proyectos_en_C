@@ -1,22 +1,6 @@
 #include<stdio.h>
 #include<conio.h>
 
-int main(){
-
-    int vector1[5];
-    int vector2[5];
-    int vecsuma[5];
-
-    cargar(vector1);
-    cargar(vector2);
-    generarVector(vector1, vector2, vecsuma);
-    imprimir(vector1);
-    imprimir(vector2);
-    imprimir(vecsuma);
-
-    getch();
-    return 0;
-}
 void cargar(int vec[5]){
 
     int x;
@@ -42,4 +26,21 @@ void imprimir(int vec[5]){
         printf("%i ", vec[x]);
     }
     printf("\n");
+}
+
+int main(){
+
+    int vector1[5];
+    int vector2[5];
+    int vecsuma[5];
+
+    cargar(vector1);
+    cargar(vector2);
+    generarVector(vector1, vector2, vecsuma);
+    imprimir(vector1);
+    imprimir(vector2);
+    imprimir(vecsuma);
+
+    getch();
+    return 0;
 }

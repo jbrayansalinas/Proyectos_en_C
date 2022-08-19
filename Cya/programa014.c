@@ -1,4 +1,4 @@
-/*#include<stdio.h>
+#include<stdio.h>
 #include<conio.h>
 
 void presentacion(){
@@ -34,4 +34,4 @@ int main(){
     getch();
     return 0;
 }
-*/
+
