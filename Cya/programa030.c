@@ -16,7 +16,5 @@ int main() {
     printf("\n\nEl nuevo texto en mayusculas es el siguente: \n");
     printf("%s", strupr(texto));
 
-
-
 return 0;  
 }
