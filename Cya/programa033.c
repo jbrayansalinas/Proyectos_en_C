@@ -1,4 +1,4 @@
-/* Funciones matematicas y Funciones trigonometricas*/
+/* Funciones matemáticas y Funciones trigonométricas*/
 
 
 #include <stdio.h>
@@ -8,7 +8,7 @@
 *   ceil(x) -> Redondea al entero mayor más cercano
 *   fabs(x) -> Devuelve el valor absoluto de x
 *   floor(x) -> Redondea al entero menor más cercano 
-*   sqrt(x) -> Saca la raiz cuadrada de x
+*   sqrt(x) -> Saca la raíz cuadrada de x
 *   fmod(x, y) -> Calcula el resto de la division de x/y
 *   pow(x, y) -> Calcula x elevado a la potencia de y
 ********************************************************************
@@ -28,27 +28,27 @@ int main()
 }
 
 void funcionMate(){
-    float x, y, cambio=0;
+    double x, y, cambio=0;
     printf("Escribe el numero: \n");
-    scanf("%f", &x);
+    scanf("%lf", &x);
 
     cambio = ceil(x);
-    printf("%.2f entero mayor mas cercano \n", cambio);
+    printf("%.2lf entero mayor mas cercano \n", cambio);
 
     cambio = fabs(x);
-    printf("%.2f valor absoluto \n", cambio);
+    printf("%.2lf valor absoluto \n", cambio);
 
     cambio = floor(x);
-    printf("%.2f entero menor \n", cambio);
+    printf("%.2lf entero menor \n", cambio);
 
     cambio = sqrt(x);
-    printf("%.2f raiz cuadrado \n", cambio);
+    printf("%.2f raíz cuadrado \n", cambio);
 
     printf("Escribe otro numero \n");
-    scanf("%f", &y);
+    scanf("%lf", &y);
     cambio = fmod(x, y);
-    printf("%.2f mod \n", cambio);
+    printf("%.2lf mod \n", cambio);
 
     cambio = pow(x, y);
-    printf("%.2f elevado \n", cambio);
+    printf("%.2lf elevado \n", cambio);
 }

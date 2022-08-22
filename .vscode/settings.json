@@ -27,5 +27,13 @@
     "**/.*/**",
     "**/.vscode",
     "**/.vscode/**"
-  ]
+  ],
+  "files.associations": {
+    "stdio.h": "c",
+    "math.h": "c"
+  },
+  "cSpell.words": [
+    "funcion"
+  ],
+  "cSpell.language": "en,es-ES,es"
 }
