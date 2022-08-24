@@ -1,0 +1,14 @@
+	.:Directorio Telefonico
+
+
+Nombre: johs
+Apellidos: salinas
+Celular: 3212294281
+
+Nombre: brayan
+Apellidos: lopez
+Celular: 3027374438
+
+Nombre: jbrayan
+Apellidos: salinas
+Celular: 1234567890
