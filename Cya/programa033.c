@@ -1,11 +1,11 @@
-/* Funciones matemáticas y Funciones trigonométricas*/
+/* Funciones matematicas y Funciones trigonométricas*/
 
 
 #include <stdio.h>
 #include <math.h>
 
 /*******************************************************************
-*   ceil(x) -> Redondea al entero mayor más cercano
+*   ceil(x) -> Redondea al entero mayor mas cercano
 *   fabs(x) -> Devuelve el valor absoluto de x
 *   floor(x) -> Redondea al entero menor más cercano 
 *   sqrt(x) -> Saca la raíz cuadrada de x

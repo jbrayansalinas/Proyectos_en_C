@@ -30,7 +30,9 @@
   ],
   "files.associations": {
     "stdio.h": "c",
-    "math.h": "c"
+    "math.h": "c",
+    "librerias.h": "c",
+    "metro.h": "c"
   },
   "cSpell.words": [
     "funcion"
