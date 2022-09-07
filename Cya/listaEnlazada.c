@@ -24,8 +24,8 @@ Nodo* getNode(int valor){
 listaLigada* obtenerNuevaListaLigada(){
     listaLigada* ll = (listaLigada*)malloc(sizeof(listaLigada));
     ll->tamano=0;
-    ll->primerItem==NULL;
-    ll->ultimoItem==NULL;
+    ll->primerItem=NULL;
+    ll->ultimoItem=NULL;
     return ll;
 }
 
@@ -59,19 +59,47 @@ void update(listaLigada* ll, unsigned int indice, int nuevoValor){
     }
 }
 
+void removed(listaLigada* ll, unsigned int indice){
+    if(ll->tamano && indice<ll->tamano){
+        Nodo* aux;
+        if (indice == 0){
+            aux = ll->primerItem;
+            ll->primerItem = ll->primerItem->sig;
+            free(aux);
+        } else {
+            Nodo* exploradorLista = ll->primerItem;
+            int i = 0;
+            while (i++<indice-1)
+                exploradorLista = exploradorLista->sig;
+            aux = exploradorLista->sig;
+            if(indice==ll->tamano-1){
+                exploradorLista->sig =NULL;
+                ll->ultimoItem = exploradorLista;
+            } else exploradorLista->sig = exploradorLista->sig->sig;
+        }
+        free(aux);
+        ll->tamano--;
+        
+    }
+}
+
 int	main()
 {
-    listaLigada* LISTA = obtenerNuevaListaLigada();
-     Nodo* a = getNode(1);
-     Nodo* b = getNode(2);
-     Nodo* c = getNode(3);
-     Nodo* d = getNode(4);
- 
-     add(LISTA,a);
-     add(LISTA,b);
-     add(LISTA,c);
-     add(LISTA,d);
- 
-     printf("%d\n",read(LISTA,3)->valor);
+    listaLigada* lista = obtenerNuevaListaLigada();
+    Nodo* a = getNode(1);
+    Nodo* b = getNode(2);
+    Nodo* c = getNode(3);
+
+    add(lista,a);
+    add(lista,b);
+    add(lista,c);
+
+    printf("El valor es %d\n", read(lista,1)->valor);
+    update(lista,1,6);
+    printf("El valor es %d\n", read(lista,1)->valor);
+    removed(lista,1);
+    printf("El valor es %d\n", read(lista,1)->valor);
+
+    free(lista);
     return 0;
 }
