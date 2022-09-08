@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <stdlib.h>n
+#include <stdlib.h>
 
 typedef struct Nodo{
     int val;

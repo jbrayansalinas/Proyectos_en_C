@@ -78,6 +78,7 @@ int main(int argc, char const *argv[])
         case 0:
             printf("Gracias por usar el programa");
             bandera=0;
+            break;
         default:
             printf("Opcion invalida");
             break;
