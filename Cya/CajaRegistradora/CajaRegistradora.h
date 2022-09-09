@@ -89,38 +89,49 @@ void imprimirProducto(ListaProducto listaProducto){
     }
 }
 
-void registrarVenta(ListaVenta *listaVenta, char fecha[], char comprador[], int cantidad, Productos productos){
+void registrarVenta(ListaVenta *listaVenta, ListaProducto  *listaProducto,char fecha[], char comprador[], struct Productos pro){
     NodoVenta *nodoVenta, *temporal;
-    ListaProducto listaProducto;
     nodoVenta = (NodoVenta*) calloc(1,sizeof (NodoVenta));
     strcpy(nodoVenta->venta.fecha,fecha);
     strcpy(nodoVenta->venta.comprador,comprador);
 
-    NodoProducto *current = listaProducto.primer;
-    int tamanoProducto = listaProducto.tamanoP;
+    NodoProducto *current = listaProducto->primer;
+    int tamanoProducto = listaProducto->tamanoP;
     if(tamanoProducto>0) {
         while (tamanoProducto > 0) {
-            if (nodoVenta->venta.productos.nombre == current->productos.nombre) {
-                if (cantidad < current->productos.cantidad) {
-                    strcpy(nodoVenta->venta.productos.nombre, current->productos.nombre);
-                    nodoVenta->venta.cantidadVenta = cantidad;
-                    current->productos.cantidad -=cantidad;
-                    nodoVenta->venta.productos.precio = current->productos.precio;
-                    nodoVenta->venta.productos.idProducto = current->productos.idProducto;
+            if (strcmp(pro.nombre,current->productos.nombre)) {
+                if (pro.cantidad < current->productos.cantidad) {
+                    strcpy(pro.nombre, current->productos.nombre);
+                    current->productos.cantidad -= pro.cantidad;
+                    pro.precio = current->productos.precio;
+                    pro.idProducto = current->productos.idProducto;
+                    strcpy(nodoVenta->venta.productos.nombre, pro.nombre);
+                    nodoVenta->venta.cantidadVenta = current->productos.cantidad;
+                    nodoVenta->venta.productos.precio = pro.precio;
+                    nodoVenta->venta.productos.idProducto = pro.idProducto;
+                    nodoVenta->venta.productos.cantidad = current->productos.cantidad;
                     tamanoProducto--;
-                } else printf("No hay suficiente suministro");
-            } else printf("El producto no existe");
-            current = current->sig;
+                    current = current->sig;
+                }
+            }
+            if (listaVenta->head == NULL)
+                nodoVenta->next = nodoVenta;
+            else {
+                nodoVenta->next = listaVenta->head;
+                temporal = listaVenta->head;
+            }
+            listaVenta->head = nodoVenta;
+            listaVenta->tamanoV++;
         }
     }else printf("No hay productos");
 }
 
 void inventario(ListaVenta listaVenta){
     if (listaVenta.head == NULL)
-        printf("La lista esta vacia\n");
+        printf("No hay ventas\n");
     else{
         int tamano = listaVenta.tamanoV;
-        printf("Las Ventas son: \n");
+        printf("\nLas Ventas son: \n\n");
         NodoVenta *current = listaVenta.head;
         while (tamano>0){
             printf("id de la venta: %d\n",current->venta.idVenta);
@@ -130,6 +141,7 @@ void inventario(ListaVenta listaVenta){
             printf("Nombre del producto: %s\n",current->venta.productos.nombre);
             printf("Precio: %d\n",current->venta.productos.precio);
             printf("Cantidad: %d\n",current->venta.productos.cantidad);
+            printf("\n*************************************************\n");
             current = current->next;
             tamano--;
         }

@@ -11,10 +11,12 @@ int main(){
 
     agregarProducto(&listaProducto,"papa",1000,15);
     agregarProducto(&listaProducto,"yuca",2000,25);
-    Productos productos;
-    char *nombreProducto = strcpy(productos.nombre,"papa");
-    registrarVenta(&listaVenta,fechayhora,"Yop",3,nombreProducto);
     imprimirProducto(listaProducto);
+    struct Productos productos;
+    strcpy(productos.nombre,"papa");
+    productos.cantidad = 3;
+    registrarVenta(&listaVenta,&listaProducto,fechayhora,"Yop",productos);
+    inventario(listaVenta);
 
     return 0;
 }
