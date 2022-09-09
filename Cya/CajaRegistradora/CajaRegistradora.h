@@ -13,6 +13,7 @@ typedef struct Venta{
     int idVenta;
     char fecha[20];
     char comprador[30];
+    int cantidadVenta;
     Productos productos;
 }Venta;
 typedef struct NodoVenta{
@@ -88,8 +89,49 @@ void imprimirProducto(ListaProducto listaProducto){
     }
 }
 
-void registrarVenta(ListaVenta *listaVenta, char fecha[], char Comprador[], Productos productos){
+void registrarVenta(ListaVenta *listaVenta, char fecha[], char comprador[], int cantidad, Productos productos){
     NodoVenta *nodoVenta, *temporal;
+    ListaProducto listaProducto;
     nodoVenta = (NodoVenta*) calloc(1,sizeof (NodoVenta));
+    strcpy(nodoVenta->venta.fecha,fecha);
+    strcpy(nodoVenta->venta.comprador,comprador);
 
+    NodoProducto *current = listaProducto.primer;
+    int tamanoProducto = listaProducto.tamanoP;
+    if(tamanoProducto>0) {
+        while (tamanoProducto > 0) {
+            if (nodoVenta->venta.productos.nombre == current->productos.nombre) {
+                if (cantidad < current->productos.cantidad) {
+                    strcpy(nodoVenta->venta.productos.nombre, current->productos.nombre);
+                    nodoVenta->venta.cantidadVenta = cantidad;
+                    current->productos.cantidad -=cantidad;
+                    nodoVenta->venta.productos.precio = current->productos.precio;
+                    nodoVenta->venta.productos.idProducto = current->productos.idProducto;
+                    tamanoProducto--;
+                } else printf("No hay suficiente suministro");
+            } else printf("El producto no existe");
+            current = current->sig;
+        }
+    }else printf("No hay productos");
+}
+
+void inventario(ListaVenta listaVenta){
+    if (listaVenta.head == NULL)
+        printf("La lista esta vacia\n");
+    else{
+        int tamano = listaVenta.tamanoV;
+        printf("Las Ventas son: \n");
+        NodoVenta *current = listaVenta.head;
+        while (tamano>0){
+            printf("id de la venta: %d\n",current->venta.idVenta);
+            printf("Comprador: %s\n",current->venta.comprador);
+            printf("Fecha: %s\n",current->venta.fecha);
+            printf("id del producto: %d\n",current->venta.productos.idProducto);
+            printf("Nombre del producto: %s\n",current->venta.productos.nombre);
+            printf("Precio: %d\n",current->venta.productos.precio);
+            printf("Cantidad: %d\n",current->venta.productos.cantidad);
+            current = current->next;
+            tamano--;
+        }
+    }
 }
