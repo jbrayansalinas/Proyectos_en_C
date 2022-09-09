@@ -6,4 +6,4 @@ set(CMAKE_C_STANDARD 99)
 include_directories(.)
 include_directories(Cya)
 
-add_executable(Proyectos_en_C Cya/listaLigadaCircular/listaCircularAutomovil.c Cya/listaLigadaCircular/listaCircularAutomovil.h)
+add_executable(Proyectos_en_C Cya/CajaRegistradora/CajaRegistradora.c Cya/CajaRegistradora/CajaRegistradora.h)
