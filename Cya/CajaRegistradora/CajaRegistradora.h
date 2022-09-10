@@ -127,17 +127,17 @@ void inventario(ListaVenta listaVenta){
         int tamano = listaVenta.tamanoV;
         printf("\nLas Ventas son: \n\n");
         NodoVenta *current = listaVenta.head;
+        printf("id de la venta: %d\n",current->venta.idVenta);
+        printf("Comprador: %s\n",current->venta.comprador);
+        printf("Fecha: %s\n",current->venta.fecha);
         while (tamano>0){
-            printf("id de la venta: %d\n",current->venta.idVenta);
-            printf("Comprador: %s\n",current->venta.comprador);
-            printf("Fecha: %s\n",current->venta.fecha);
-            printf("id del producto: %d\n",current->venta.productos.idProducto);
+            printf("\nid del producto: %d\n",current->venta.productos.idProducto);
             printf("Nombre del producto: %s\n",current->venta.productos.nombre);
             printf("Precio: %d\n",current->venta.productos.precio);
             printf("Cantidad: %d\n",current->venta.productos.cantidad);
-            printf("\n*************************************************\n");
             current = current->next;
             tamano--;
         }
+        printf("\n*************************************************\n");
     }
 }
