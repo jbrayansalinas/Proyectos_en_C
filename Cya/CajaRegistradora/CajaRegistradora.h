@@ -48,27 +48,23 @@ ListaProducto crearListaProducto() {
 }
 
 void agregarProducto(ListaProducto *listaProducto, char nombre[], int precio, int cantidad){
-    NodoProducto *temporal,*nodoProducto;
-    int tamano = listaProducto->tamanoP,cont=0;
+    NodoProducto *temporal,*nodoProducto = NULL;
     nodoProducto = (NodoProducto*) calloc(1,sizeof (NodoProducto));
-        strcpy(nodoProducto->productos.nombre, nombre);
-        nodoProducto->productos.precio = precio;
-        nodoProducto->productos.cantidad = cantidad;
-        if (listaProducto->primer == NULL)
-            nodoProducto->sig = nodoProducto;
-        else {
-            nodoProducto->sig = listaProducto->primer;
-            temporal = listaProducto->primer;
-            while (temporal->sig != listaProducto->primer)
-                temporal = temporal->sig;
-            temporal->sig = nodoProducto;
-        }
-        listaProducto->primer = nodoProducto;
-        listaProducto->tamanoP++;
-    for (int i = 0; i < tamano; i++) {
-        nodoProducto->productos.idProducto = tamano;
+
+    strcpy(nodoProducto->productos.nombre, nombre);
+    nodoProducto->productos.precio = precio;
+    nodoProducto->productos.cantidad = cantidad;
+    int tamano = 0;
+    tamano = listaProducto->tamanoP++;
+    nodoProducto->productos.idProducto = tamano;
         printf("Ya se agrg%c el producto\n\n", 162);
-    }
+        if (listaProducto->primer == NULL)
+            listaProducto->primer = nodoProducto;
+        else {
+            temporal = listaProducto->primer;
+            listaProducto->primer = nodoProducto;
+            listaProducto->primer->sig = temporal;
+        }
 }
 
 void imprimirProducto(ListaProducto listaProducto){
@@ -90,40 +86,38 @@ void imprimirProducto(ListaProducto listaProducto){
 }
 
 void registrarVenta(ListaVenta *listaVenta, ListaProducto  *listaProducto,char fecha[], char comprador[], struct Productos pro){
-    NodoVenta *nodoVenta, *temporal;
+    NodoVenta *nodoVenta = NULL, *temporal= NULL;
     nodoVenta = (NodoVenta*) calloc(1,sizeof (NodoVenta));
-    strcpy(nodoVenta->venta.fecha,fecha);
-    strcpy(nodoVenta->venta.comprador,comprador);
-
-    NodoProducto *current = listaProducto->primer;
+    NodoProducto *current = NULL;
+    current = listaProducto->primer;
     int tamanoProducto = listaProducto->tamanoP;
-    if(tamanoProducto>0) {
-        while (tamanoProducto > 0) {
-            if (strcmp(pro.nombre,current->productos.nombre)) {
+    while (tamanoProducto > 0) {
+            if (strcmp(pro.nombre,current->productos.nombre)==0) {
                 if (pro.cantidad < current->productos.cantidad) {
+                    strcpy(nodoVenta->venta.fecha,fecha);
+                    strcpy(nodoVenta->venta.comprador,comprador);
                     strcpy(pro.nombre, current->productos.nombre);
                     current->productos.cantidad -= pro.cantidad;
                     pro.precio = current->productos.precio;
                     pro.idProducto = current->productos.idProducto;
                     strcpy(nodoVenta->venta.productos.nombre, pro.nombre);
-                    nodoVenta->venta.cantidadVenta = current->productos.cantidad;
+                    nodoVenta->venta.cantidadVenta = pro.cantidad;
                     nodoVenta->venta.productos.precio = pro.precio;
                     nodoVenta->venta.productos.idProducto = pro.idProducto;
-                    nodoVenta->venta.productos.cantidad = current->productos.cantidad;
-                    tamanoProducto--;
-                    current = current->sig;
+                    nodoVenta->venta.productos.cantidad = pro.cantidad;
                 }
             }
-            if (listaVenta->head == NULL)
-                nodoVenta->next = nodoVenta;
-            else {
-                nodoVenta->next = listaVenta->head;
-                temporal = listaVenta->head;
-            }
-            listaVenta->head = nodoVenta;
-            listaVenta->tamanoV++;
-        }
-    }else printf("No hay productos");
+            current = current->sig;
+            tamanoProducto--;
+    }
+    if (listaVenta->head == NULL)
+        listaVenta->head = nodoVenta;
+    else {
+        temporal = listaVenta->head;
+        listaVenta->head = nodoVenta;
+        listaVenta->head->next = temporal;
+    }
+    listaVenta->tamanoV++;
 }
 
 void inventario(ListaVenta listaVenta){
