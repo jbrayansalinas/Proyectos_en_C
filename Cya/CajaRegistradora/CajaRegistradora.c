@@ -13,12 +13,7 @@ int main(){
     char fechayhora[100];
     strftime(fechayhora, 100, "%d/%m/%Y", tm);
 
-    /*strcpy(producto.nombre,"yuca");
-    producto.cantidad = 25;
-    producto.precio = 2000;
-    agregarProducto(&listaProducto,producto);
-
-    strcpy(producto.nombre,"papa");
+    /*strcpy(producto.nombre,"papa");
     producto.cantidad = 15;
     producto.precio = 1000;
 
@@ -43,6 +38,8 @@ int main(){
     registrarVenta(&listaVenta,&listaProducto,&otrosProductos,fechayhora,comprador, cantProductos);
     listaVentas(listaVenta);
     imprimirProducto(listaProducto);*/
+
+
 
     while (bandera !=0) {
         system("clear");
@@ -95,6 +92,7 @@ int main(){
                         fflush(stdin);
                         scanf("%d", &producto.cantidad);
                         agregarProducto(&listaProducto,producto);
+                        printf("Ya se agrg%c el producto\n\n", 162);
                         break;
                     case 2:
                         imprimirProducto(listaProducto);

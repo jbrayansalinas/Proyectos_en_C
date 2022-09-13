@@ -42,23 +42,28 @@ ListaProducto crearListaProducto() {
 }
 
 void agregarProducto(ListaProducto *listaProducto, struct NodoProducto producto){
-    NodoProducto *temporal,*nodoProducto = NULL;
+    NodoProducto *temporal,*nodoProducto = NULL,*revNombre=NULL;
     nodoProducto = (NodoProducto*) calloc(1,sizeof (NodoProducto));
-
-    strcpy(nodoProducto->nombre, producto.nombre);
-    nodoProducto->precio = producto.precio;
-    nodoProducto->cantidad = producto.cantidad;
-    int tamano = 0;
-    tamano = listaProducto->tamanoP++;
-    nodoProducto->idProducto = tamano;
-        /*printf("Ya se agrg%c el producto\n\n", 162);*/
-        if (listaProducto->primer == NULL)
-            listaProducto->primer = nodoProducto;
-        else {
-            temporal = listaProducto->primer;
-            listaProducto->primer = nodoProducto;
-            listaProducto->primer->sig = temporal;
-        }
+    revNombre = listaProducto->primer;
+    int bandera =1;
+    while (bandera!=0) {
+            strcpy(nodoProducto->nombre, producto.nombre);
+            nodoProducto->precio = producto.precio;
+            nodoProducto->cantidad = producto.cantidad;
+            int tamano = 0;
+            tamano = listaProducto->tamanoP++;
+            nodoProducto->idProducto = tamano;
+            if (listaProducto->primer == NULL) {
+                listaProducto->primer = nodoProducto;
+                bandera=0;
+            }
+            else if (strcmp(producto.nombre, revNombre->nombre) == 1) {
+                temporal = listaProducto->primer;
+                listaProducto->primer = nodoProducto;
+                listaProducto->primer->sig = temporal;
+                bandera=0;
+            }else revNombre = revNombre->sig;
+    }
 }
 
 void imprimirProducto(ListaProducto listaProducto){
@@ -112,7 +117,7 @@ void registrarVenta(ListaVenta *listaVenta, ListaProducto *listaProducto, ListaP
                     cantProductos--;
                     nodoProducto = nodoProducto->sig;
                     current = current->sig;
-                }
+                } else printf("No hay suficientes\n");
             }else current = current->sig;
         }
             tamanoProducto--;
