@@ -101,6 +101,7 @@ void registrarVenta(ListaVenta *listaVenta, ListaProducto  *listaProducto,char f
                     pro.precio = current->productos.precio;
                     pro.idProducto = current->productos.idProducto;
                     strcpy(nodoVenta->venta.productos.nombre, pro.nombre);
+                    nodoVenta->venta.idVenta = listaVenta->tamanoV+1;
                     nodoVenta->venta.cantidadVenta = pro.cantidad;
                     nodoVenta->venta.productos.precio = pro.precio;
                     nodoVenta->venta.productos.idProducto = pro.idProducto;
@@ -123,21 +124,35 @@ void registrarVenta(ListaVenta *listaVenta, ListaProducto  *listaProducto,char f
 void inventario(ListaVenta listaVenta){
     if (listaVenta.head == NULL)
         printf("No hay ventas\n");
-    else{
-        int tamano = listaVenta.tamanoV;
+    else {
+        int tamano = listaVenta.tamanoV, bandera =1;
         printf("\nLas Ventas son: \n\n");
-        NodoVenta *current = listaVenta.head;
-        printf("id de la venta: %d\n",current->venta.idVenta);
-        printf("Comprador: %s\n",current->venta.comprador);
-        printf("Fecha: %s\n",current->venta.fecha);
-        while (tamano>0){
-            printf("\nid del producto: %d\n",current->venta.productos.idProducto);
-            printf("Nombre del producto: %s\n",current->venta.productos.nombre);
-            printf("Precio: %d\n",current->venta.productos.precio);
-            printf("Cantidad: %d\n",current->venta.productos.cantidad);
-            current = current->next;
-            tamano--;
+        NodoVenta *current = listaVenta.head, *temporal = current;
+        while (bandera !=0) {
+            printf("id de la venta: %d\n", current->venta.idVenta);
+            printf("Comprador: %s\n", current->venta.comprador);
+            printf("Fecha: %s\n", current->venta.fecha);
+            if(strcmp(temporal->venta.comprador,temporal->next->venta.comprador)==0) {
+                while (tamano > 0 && strcmp(temporal->venta.comprador,temporal->next->venta.comprador)==0) {
+                    printf("\nid del producto: %d\n", temporal->venta.productos.idProducto);
+                    printf("Nombre del producto: %s\n", temporal->venta.productos.nombre);
+                    printf("Precio: %d\n", temporal->venta.productos.precio);
+                    printf("Cantidad: %d\n", temporal->venta.productos.cantidad);
+                    tamano--;
+                    temporal = temporal->next;
+                }
+            }else if(strcmp(temporal->venta.comprador,temporal->next->venta.comprador)==1) {
+                while (tamano > 0 && strcmp(temporal->venta.comprador, temporal->next->venta.comprador) == 1) {
+                    printf("\nid del producto: %d\n", temporal->venta.productos.idProducto);
+                    printf("Nombre del producto: %s\n", temporal->venta.productos.nombre);
+                    printf("Precio: %d\n", temporal->venta.productos.precio);
+                    printf("Cantidad: %d\n", temporal->venta.productos.cantidad);
+                    tamano--;
+                    temporal = temporal->next;
+                }
+            }
+            printf("\n*************************************************\n");
+            bandera=0;
         }
-        printf("\n*************************************************\n");
     }
 }

@@ -15,11 +15,17 @@ int main(){
     agregarProducto(&listaProducto,"yuca",2000,25);
     imprimirProducto(listaProducto);
     struct Productos producto;
-    /*strcpy(producto.nombre,"yuca");
-    producto.cantidad = 3;
+    strcpy(producto.nombre,"yuca");
+    producto.cantidad = 5;
     registrarVenta(&listaVenta,&listaProducto,fechayhora,"Yop",producto);
-    inventario(listaVenta);*/
-    imprimirProducto(listaProducto);
+    strcpy(producto.nombre,"papa");
+    producto.cantidad = 4;
+    registrarVenta(&listaVenta,&listaProducto,fechayhora,"Yop",producto);
+    strcpy(producto.nombre,"papa");
+    producto.cantidad = 3;
+    registrarVenta(&listaVenta,&listaProducto,fechayhora,"brayan",producto);
+    inventario(listaVenta);
+    //imprimirProducto(listaProducto);
 
     while (bandera !=0) {
         printf("\n\tCaja resgistradora\n");
@@ -33,20 +39,20 @@ int main(){
 
         switch (opcion) {
             case 1:
+                printf("Nombre del comprador: ");
+                fflush(stdin);
+                gets(comprador);
                 do {
-                    printf("Nombre del comprador: ");
-                    fflush(stdin);
-                    gets(comprador);
                     printf("Nombre del producto: ");
                     fflush(stdin);
                     gets(producto.nombre);
                     printf("cantidad: ");
                     fflush(stdin);
                     scanf("%d", &producto.cantidad);
-                    registrarVenta(&listaVenta, &listaProducto, fechayhora, comprador, producto);
+                    registrarVenta(&listaVenta,&listaProducto,fechayhora,comprador,producto);
                     printf("Desea agregar otro producto? 1)SI 2)NO");
                     scanf("%d", &continuar);
-                } while (continuar != 2);
+                } while (continuar == 1);
                 printf("Se agrego correctamente\n");
                 break;
             case 2:
